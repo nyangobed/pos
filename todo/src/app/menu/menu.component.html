@@ -1,0 +1,16 @@
+<header>
+  <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+    <div><a routerLink="" class="navbar-brand">Tracom</a></div>
+    <ul class="navbar-nav">
+      <li><a *ngIf="authentication.isUserLoggedIn()" routerLink="welcome/name" class="nav-link">Home</a></li>
+      <li><a  *ngIf = "authentication.isUserLoggedIn()" routerLink="/list" class="nav-link">POS</a></li>
+      <li><a  *ngIf = "authentication.isUserLoggedIn()" routerLink="/sales" class="nav-link"> POS SALES</a></li>
+    </ul>
+
+    <ul class="navbar-nav navbar-collapse justify-content-end">
+        <li><a *ngIf= "!authentication.isUserLoggedIn()" routerLink="/login" class="nav-link">Login</a></li>
+        <li><a *ngIf= "authentication.isUserLoggedIn()" routerLink="/logout" class="nav-link">Logout</a></li>
+      </ul>
+  </nav>
+</header>
+

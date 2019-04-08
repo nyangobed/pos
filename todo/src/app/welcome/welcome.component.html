@@ -1,0 +1,15 @@
+<h1>Welcome</h1>
+<div class="container">
+welcome{{name}} to Tracom
+Manage The POS<br> <a routerLink="/list">here</a>
+</div>
+<div class="container">
+  click here to get a customized welcome message<br>
+  <button (click)="getWelcomeMessageWithParameter()"class="btn btn-success">Welcome</button>
+</div>
+
+<div class="container" *ngIf="welcomeMessageFromService">
+  <H2>Customised welcom message</H2>
+    {{welcomeMessageFromService}}
+  </div>
+

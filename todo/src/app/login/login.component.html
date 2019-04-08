@@ -1,0 +1,25 @@
+<div>
+<h1>Login Page</h1>
+<div class="container">
+       
+        <div class="container">
+        <div class="alert alert-warning" *ngIf ='invalidLogin'>{{errorMessage}}</div>
+        
+        <div class="row">
+          <div class="Absolute-Center is-Responsive">
+           
+            <div class="col-sm-12 col-md-10 col-md-offset-1">
+               
+                <form (ngSubmit)="handleLogin()" >
+                        <label>User Name:<input type="text" name="username" [(ngModel)]="username"></label><br><br>
+                        <label>Password:<input type="password" name="password" [(ngModel)]="password"></label><br><br>
+                <button  class="btn btn-success">Login</button>
+                <div class="form-group text-center">
+           <a routerLink="#">Forgot Password</a>&nbsp;|&nbsp;<a routerLink="#">Support</a>
+                </div>
+              </form>        
+            </div>  
+          </div>    
+        </div>
+      </div>
+    </div>

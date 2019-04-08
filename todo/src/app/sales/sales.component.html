@@ -1,0 +1,44 @@
+<h1>POS </h1>
+<div>
+    <form (ngSubmit) ="!todoForm.invalid && createSale()" #todoForm="ngForm">
+    <label>  Serial Number:</label>
+    <input type="text" required="required"> 
+    <label>Amount:</label>
+    <input type="text" required="required">
+    <label>Quantity:</label>
+    <input type="text" required="required"> <br>
+    <button class="btn btn-success">Add Sale </button>
+</form>
+</div>
+<div class="alert alert-success" *ngIf ='Message'>{{Message}}</div>
+<div class="container">
+<table class="table">
+  
+  <thead>
+    <tr>
+   
+      <th>Serial Number</th>
+      <th>Amount</th>
+      <th>Quantity</th>
+      <th>Delete</th>
+     <th>   <input type="text" placeholder="serial number"> <br> <button (click) = "updateTodo(todo.id)" class="btn btn-success">Search</button></th>
+    </tr>
+  </thead>
+  <tbody>
+  
+   <tr>
+      
+      <td>{{todo.serial}}</td>
+      <td>{{todo.Amount}}</td>
+      <td>{{todo.Quantity}}</td>
+ 
+      <td><button (click) = "deleteTodo(todo.id)" class="btn btn-warning">Delete</button></td>
+
+    </tr>
+
+  </tbody>
+</table>
+
+
+
+
