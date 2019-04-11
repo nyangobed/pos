@@ -19,30 +19,23 @@ export class Todo{
   styleUrls: ['./list.component.css']
 })
 export class ListComponent implements OnInit {
-  
+  dtOptions: DataTables.Settings = {};
 todos =[]
-
 Message : string
-// new Todo(1, 5, 'ingineco','Hezekiah', new Date()),
-// new Todo(2, 7, 'ingineco','Obed', new Date()),
-// new Todo(3, 8, 'ingineco', 'Fridah', new Date()),
-//{id : 1, description : ''},
-//{id: 2, description: ''},
-//{id: 3, description:''}
-
- // todo ={
-  //  id : 1,
-    //description : 'Equity Bank'
-  //}
-
   constructor(
     private todoService: TodoDataService,
     private router: Router
   ) { }
-
+  
   ngOnInit() {
+    this.dtOptions= {
+      pagingType: 'full_numbers',
+      pageLength: 5,
+      processing: true
+    };
+  
    this.refreshTodos()
-  }
+    }
   refreshTodos(){
     this.todoService.retrieveAllTodos('obed').subscribe(
       response => {

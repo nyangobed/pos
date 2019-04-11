@@ -13,10 +13,11 @@
                 <form (ngSubmit)="handleLogin()" >
                         <label>User Name:<input type="text" name="username" [(ngModel)]="username"></label><br><br>
                         <label>Password:<input type="password" name="password" [(ngModel)]="password"></label><br><br>
-                <button  class="btn btn-success">Login</button>
-                <div class="form-group text-center">
-           <a routerLink="#">Forgot Password</a>&nbsp;|&nbsp;<a routerLink="#">Support</a>
-                </div>
+                <button  class="btn btn-success">Login</button><br>               
+           <a routerLink="#">Forgot Password</a>&nbsp;|&nbsp;<a  routerLink="/signup">Sign Up</a> 
+           
+              
+               
               </form>        
             </div>  
           </div>    

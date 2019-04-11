@@ -3,6 +3,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { WelcomeDataService } from '../service/data/welcome-data.service';
+import { AuthenticationService } from '../service/authentication.service';
 
 
 // @ComponentScan(value ="com.hezRono.springboot.web")
@@ -18,7 +19,8 @@ export class WelcomeComponent implements OnInit {
   name =''
   welcomeMessageFromService: string
   constructor(private route: ActivatedRoute,
-    private service: WelcomeDataService) { }
+    private service: WelcomeDataService,
+    private authentication: AuthenticationService) { }
 
   ngOnInit() {
    // console.log( this.route.snapshot.params['name'])

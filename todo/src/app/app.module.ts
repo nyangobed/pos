@@ -15,10 +15,10 @@ import { TodoComponent } from './todo/todo.component';
 import { HttpInterceptorService } from './service/http/http-interceptor.service';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { SalesComponent } from './sales/sales.component';
- // import { DataTablesModule } from 'angular-datatables';
-
-
-
+import { DataTablesModule } from 'angular-datatables';
+import { SignupComponent } from './signup/signup.component';
+import { NgRedux, NgReduxModule } from '@angular-redux/store';
+import { IAppState, rootReducer, INITIAL_STATE } from './store';
 
 @NgModule({
   declarations: [
@@ -33,12 +33,14 @@ import { SalesComponent } from './sales/sales.component';
     TodoComponent,
     SidebarComponent,
     SalesComponent,
+    SignupComponent,
    
   
   ],
   imports: [
     BrowserModule,
- // DataTablesModule,
+  DataTablesModule,
+  NgReduxModule,
     AppRoutingModule,
     FormsModule,
        HttpClientModule
@@ -49,4 +51,8 @@ import { SalesComponent } from './sales/sales.component';
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule { 
+  constructor (ngRedux: NgRedux<IAppState>) {
+    ngRedux.configureStore(rootReducer, INITIAL_STATE);
+}
+}

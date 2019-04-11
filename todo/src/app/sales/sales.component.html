@@ -1,44 +1,51 @@
-<h1>POS </h1>
-<div>
-    <form (ngSubmit) ="!todoForm.invalid && createSale()" #todoForm="ngForm">
-    <label>  Serial Number:</label>
-    <input type="text" required="required"> 
-    <label>Amount:</label>
-    <input type="text" required="required">
-    <label>Quantity:</label>
-    <input type="text" required="required"> <br>
-    <button class="btn btn-success">Add Sale </button>
-</form>
-</div>
-<div class="alert alert-success" *ngIf ='Message'>{{Message}}</div>
-<div class="container">
-<table class="table">
-  
+
+<!-- 
+<p class="text-right"><span class="badge badge-secondary">
+  Last Update: {{ (lastUpdate | async) | date:'mediumTime' }} | Total items: {{ (todos | async).length }}</span></p>
+<button class="btn btn-secondary" (click)="clearTodos()">Delete All</button><br><br> -->
+
+<div class="card">
+            <div class="card-body">
+              <!-- <h3 class="card-title">Todos App</h3> -->
+              <h1 align="center"class="card-subtitle mb-2 text-muted">POS SALES</h1>
+                         </div>
+          </div>
+    
+          <h6>Create Todo:</h6>
+          <form (ngSubmit)="onSubmit()" #todoForm="ngForm">
+           <div class="form-control">
+             <div class="col-auto">
+                <input type="text"  class="form-control"placeholder="serial"id="serial" [(ngModel)]="model.serial" name="serial"
+                #responsible="ngModel"><br>         
+                <input type="text"  class="form-control"placeholder="amount"id="amount" [(ngModel)]="model.amount" name="amount"
+                 #responsible="ngModel"><br>    
+                <input type="text"  class="form-control"placeholder="quantity"id="quantity" [(ngModel)]="model.quantity" name="quantity"
+                #responsible="ngModel"><br>                     
+               <button type="submit" class="btn btn-secondary">Create</button>
+             </div>
+           </div>
+          </form>
+          <br />
+          <h6>Todos List:</h6>
+          <div *ngIf="(todos | async)?.length!=0">
+              <table datatable id="sales">  
   <thead>
-    <tr>
-   
+    <tr>   
       <th>Serial Number</th>
-      <th>Amount</th>
-      <th>Quantity</th>
-      <th>Delete</th>
-     <th>   <input type="text" placeholder="serial number"> <br> <button (click) = "updateTodo(todo.id)" class="btn btn-success">Search</button></th>
+      <th>amount</th>
+      <th>quantity</th>      
+      <th>Delete</th>     
     </tr>
   </thead>
-  <tbody>
-  
-   <tr>
+  <tbody>  
+   
+    <tr *ngFor="let t of todos | async">      
+        <td><span  [class.completed]="t.isCompleted">{{ t.id }}</span></td> 
+         <td><span [class.completed]="t.isCompleted">{{ t.amount}}</span></td>
+        <td><span  [class.completed]="t.isCompleted">{{ t.quantity}}</span></td>
+        <td><button class="btn btn-secondary" (click)="removeTodo(t)">Delete</button></td>
       
-      <td>{{todo.serial}}</td>
-      <td>{{todo.Amount}}</td>
-      <td>{{todo.Quantity}}</td>
- 
-      <td><button (click) = "deleteTodo(todo.id)" class="btn btn-warning">Delete</button></td>
-
-    </tr>
-
+        </tr>
   </tbody>
-</table>
-
-
-
-
+</table>   
+          </div>

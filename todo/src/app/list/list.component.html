@@ -1,36 +1,30 @@
 <h1>POS </h1>
 <div class="alert alert-success" *ngIf ='Message'>{{Message}}</div>
-<div class="container">
-<table class="table">
-  
+<!-- <div class="container">
+  <table class="table"> -->
+  <table datatable id="sales">  
   <thead>
-    <tr>
-   
+    <tr>   
       <th>Serial Number</th>
       <th>Make</th>
       <th>Owner</th>
       <th>Date</th>
       <th>Update</th>
-      <th>Delete</th>
-     
+      <th>Delete</th>     
     </tr>
   </thead>
-  <tbody>
-    <!--for(Todo todo: todos)-->
-    <tr *ngFor="let todo of todos">
-      
+  <tbody>  
+    <tr *ngFor="let todo of todos">      
       <td>{{todo.serial}}</td>
       <td>{{todo.make}}</td>
       <td>{{todo.owner}}</td>
       <td>{{todo.targetDate | date}}</td>
       <td><button (click) = "updateTodo(todo.id)" class="btn btn-success">Update</button></td>
       <td><button (click) = "deleteTodo(todo.id)" class="btn btn-warning">Delete</button></td>
-
     </tr>
-
   </tbody>
 </table>
 <div class ="row">
     <button (click) = "addTodo()" class="btn btn-success">Add POS</button>
 </div>
-</div>
+<!-- </div> -->

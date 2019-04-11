@@ -1,15 +1,41 @@
-<h1>Welcome</h1>
-<div class="container">
-welcome{{name}} to Tracom
-Manage The POS<br> <a routerLink="/list">here</a>
-</div>
+<h1>Dashboard</h1>
 <div class="container">
   click here to get a customized welcome message<br>
-  <button (click)="getWelcomeMessageWithParameter()"class="btn btn-success">Welcome</button>
+  <button (click)="getWelcomeMessageWithParameter()"class="btn btn-success">Display Spring message</button><br><br>
 </div>
 
 <div class="container" *ngIf="welcomeMessageFromService">
   <H2>Customised welcom message</H2>
     {{welcomeMessageFromService}}
+  </div>
+
+
+<!--  displays the icons -->
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+<!-- end of display links -->
+
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
+<div class="home">
+    <div class="container-fluid display-table">
+        <div class="row display-table-row">
+            <div class="col-md-2 col-sm-1 hidden-xs display-table-cell v-align box" id="navigation">                  
+                <div class="navi">                   
+                    <ul>
+                        <li class="active"><a *ngIf="authentication.isUserLoggedIn()" routerLink="welcome/name"><i class="fa fa-home" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Home</span></a></li>
+                        <li><a *ngIf ="authentication.isUserLoggedIn()" routerLink="/list"><i class="fa fa-tasks" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Pos</span></a></li>
+                        <li><a *ngIf ="authentication.isUserLoggedIn()" routerLink="/sales"><i class="fa fa-bar-buy" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Sales</span></a></li>
+                          <li><a *ngIf ="authentication.isUserLoggedIn()" routerLink="/signup"><i class="fa fa-user" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Users</span></a></li>
+                        <li><a *ngIf = "authentication.isUserLoggedIn()" routerLink="/signup"><i class="fa fa-cog" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Setting</span></a></li>
+                    </ul>
+                </div>
+            </div>
+            
+        </div>
+
+    </div>  
+
   </div>
 

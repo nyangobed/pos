@@ -1,49 +1,48 @@
-import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
 import { TodoDataService } from '../service/data/todo-data.service';
-import { Todo } from '../list/list.component';
-// declare var $ ;
+import { Message } from '@angular/compiler/src/i18n/i18n_ast';
+import { Router } from '@angular/router';
+import { REMOVE_ALL_TODOS } from '../actionsredux';
+import { NgRedux, select } from '@angular-redux/store';
+import { IAppState } from '../store';
+import { ADD_TODO, REMOVE_TODO, TOGGLE_TODO } from '../actionsredux';
+import { ITodo } from '../todoredux';
 @Component({
   selector: 'app-sales',
   templateUrl: './sales.component.html',
   styleUrls: ['./sales.component.css']
 })
 export class SalesComponent implements OnInit {
-  // @ViewChild('dataTable') table: ElementRef;
-  // dataTable: any;
-  todo: Todo
-  id : number
-  constructor(
-    private todoService: TodoDataService,
-   
-    private router: Router
-  ) { }
+  dtOptions: DataTables.Settings = {};
+  @select() todos;
+  @select() lastUpdate;
+  model: ITodo = {
+    id: 0,
+    serial:"",
+    amount: "",
+    quantity:"",
+    isCompleted: false 
+  };
+  constructor(private ngRedux: NgRedux<IAppState>) { }
 
-  ngOnInit(
-   
-   )
-   {
-  //  this.dataTable = $(this.table.nativeElement);
-  //  this.dataTable.dataTable();
+  ngOnInit() {
+    this.dtOptions= {
+      pagingType: 'full_numbers',
+      pageLength: 5,
+      processing: true
+    };
   }
-  createSale() {
-    if(this.id === -1){
-      this.todoService.createTodo('obed',  this.todo)
-    .subscribe(
-      data => {
-        console.log(data)
-    //    this.router.navigate(['list'])
-      }
-    )
-
-    } else 
-    this.todoService.updateTodo('obed', this.id, this.todo)
-    .subscribe(
-      data => {
-        console.log(data)
-       // this.router.navigate(['list'])
-      }
-    )
+  clearTodos() {
+    this.ngRedux.dispatch({type: REMOVE_ALL_TODOS});
+  }
+  onSubmit() {
+    this.ngRedux.dispatch({type: ADD_TODO, todo: this.model});
+  }
+  // toggleTodo(todo) {
+  //   this.ngRedux.dispatch({ type: TOGGLE_TODO, id: todo.id });
+  // }
+  removeTodo(todo) {
+    this.ngRedux.dispatch({type: REMOVE_TODO, id: todo.id });
   }
 
 }

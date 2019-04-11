@@ -9,6 +9,8 @@ import { RouteGuardService } from './service/route-guard.service';
 import { TodoComponent } from './todo/todo.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { SalesComponent } from './sales/sales.component';
+import { SignupComponent } from './signup/signup.component';
+
 
 
 const routes: Routes = [
@@ -20,6 +22,9 @@ const routes: Routes = [
   {path: 'todo/:id', component: TodoComponent, canActivate: [RouteGuardService]},
   {path: 'sidebar', component: SidebarComponent, canActivate: [RouteGuardService]},
   {path: 'sales', component: SalesComponent, canActivate: [RouteGuardService]},
+  {path: 'signup', component:SignupComponent},
+  {path: 'todoreduxlist', component:TodoComponent,canActivate:[RouteGuardService]},
+ 
   {path: '**', component: ErrorComponent}
 ];
 
